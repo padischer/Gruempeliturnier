@@ -18,10 +18,11 @@ namespace Gruempeliturnier
                 Console.WriteLine("1:Spieler Hinzufuegen");
                 Console.WriteLine("2:Spieler Bearbeiten");
                 Console.WriteLine("3:Spieler Entfernen");
-                Console.WriteLine("4:Team Zusammenstellen");
-                Console.WriteLine("5:Team bearbeiten");
-                Console.WriteLine("6:Spiel spielen");
-                Console.WriteLine("7:Programm beenden");
+                Console.WriteLine("4:Erstellen");
+                Console.WriteLine("5:Spieler einem Team Hinzufügen");
+                Console.WriteLine("6:Spieler aus einem Team entfernen");
+                Console.WriteLine("7:Team Entfernen");
+                Console.WriteLine("8:Programm beenden");
                 Eingabe = Console.ReadLine();
                 if (Eingabe == "1")
                 {
@@ -34,6 +35,7 @@ namespace Gruempeliturnier
                 if (Eingabe == "2")
                 {
                     spieler.ChangePlayer();
+                    Console.Clear();
                 }
 
                 if (Eingabe == "3")
@@ -47,11 +49,11 @@ namespace Gruempeliturnier
                 }
                 if (Eingabe == "5")
                 {
-                    spieler.Player();
+
                 }
                 if (Eingabe == "6")
                 {
-                    spieler.RemovePlayer();
+
                 }
                 if (Eingabe == "7")
                 {

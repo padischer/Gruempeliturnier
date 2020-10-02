@@ -25,8 +25,8 @@ namespace Gruempeliturnier
             var MemberList = new List<Spieler>();
             Console.WriteLine("Bitte geben sie einen Namen für das Team ein");
             var Name = Console.ReadLine();
-            bool breakout = false;
-            while (breakout == false)                                                 
+            bool breakout = true;
+            while (breakout)                                                 
             {
 
                 foreach(Spieler spieler in Einzelspieler.SpielerList)
@@ -46,7 +46,7 @@ namespace Gruempeliturnier
                 string Member = Console.ReadLine();
                 foreach(Spieler Player in Einzelspieler.SpielerList)
                 {
-                    if(Member == )
+                  //  if(Member == )
                     {
 
                     }
