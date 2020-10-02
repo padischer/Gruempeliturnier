@@ -39,7 +39,6 @@ namespace Gruempeliturnier
 
                 if (Eingabe == "1")
                 {
-                    Console.Clear();
                     var p1 = spieler.CreatePlayer();
                     spieler.SpielerList.Add(p1);
 
@@ -48,27 +47,23 @@ namespace Gruempeliturnier
 
                 if (Eingabe == "2")
                 {
-                    Console.Clear();
                     spieler.ChangePlayer();
                     Console.Clear();
                 }
 
                 if (Eingabe == "3")
                 {
-                    Console.Clear();
                     spieler.RemovePlayer();
                     Console.Clear();
                 }
                 if (Eingabe == "4")
                 {
-                    Console.Clear();
                     var t1 = Teams.CreateTeam();
                     Teams.TeamList.Add(t1);
                     Console.Clear();
                 }
                 if (Eingabe == "5")
                 {
-                    Console.Clear();
                     Teams.FillTeam();
                     Console.Clear();
                 }
