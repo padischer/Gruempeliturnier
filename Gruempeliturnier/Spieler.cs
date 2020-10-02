@@ -1,6 +1,8 @@
 ﻿using ConsoleTables;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq.Expressions;
 
 namespace Gruempeliturnier
 {
@@ -8,9 +10,10 @@ namespace Gruempeliturnier
     {
         public List<Spieler> SpielerList = new System.Collections.Generic.List<Spieler>();
 
+        
         private string BearbeitenSpieler { get; set; }
         private int transform;
-        public int PosOfID { get; set; }
+        public string SaveID { get; set; }
         public static int Count { get; set; }
         public string ID { get; set; }
         public string Name { get; set; }
@@ -20,8 +23,32 @@ namespace Gruempeliturnier
         public string Nummer { get; set; }
         public string Ort { get; set; }
         public string PLZ { get; set; }
+        public string Change { get; set; }
 
-        internal static Spieler Create()
+        internal void ShowPlayerList()
+        {
+            var Table = new ConsoleTable("ID", "Vorname", "Name", "Telefonnummer", "Strasse", "Nummer", "Ort", "PLZ");
+            Console.WriteLine("Hier die Liste aller Spieler");
+            foreach (Spieler item in SpielerList)
+            {
+
+                Table.AddRow(item.ID, item.Vorname, item.Name, item.Telefonnummer, item.Strasse, item.Nummer, item.Ort, item.PLZ);
+            }
+            Console.WriteLine(Table);
+        }
+
+        internal void SearchPlayer(string Nummer, string Attribut, string Replacement)
+        {
+
+            foreach (Spieler item in SpielerList)
+            {
+                if (item.Nummer == BearbeitenSpieler) ;
+                
+
+            }
+        }
+
+        internal Spieler CreatePlayer()
         {
             Console.WriteLine("Bitte geben sie den Vornamen des spielers ein");
             var Vorname = Console.ReadLine();
@@ -52,43 +79,36 @@ namespace Gruempeliturnier
             };
         }
 
-        public void AdaptPlayer()
+        public void ChangePlayer()
         {
-            int count = 0;
-            var Table = new ConsoleTable("Position", "Vorname", "Name", "Telefonnummer", "Strasse", "Nummer", "Ort", "PLZ");
-            Console.WriteLine("Hier die Liste aller Spieler");
-            foreach (Spieler item in SpielerList)
-            {
-                count++;
-
-                Table.AddRow(count, item.Vorname, item.Name, item.Telefonnummer, item.Strasse, item.Nummer, item.Ort, item.PLZ);
-            }
-            Console.WriteLine(Table);
-            Console.WriteLine("Welchen Spieler möchten sie bearbeiten? Bitte geben sie die Entsprechende Position ein");
-
-            Console.WriteLine("Achtung Wenn sie einen Spieler bearbeiten müssen sie alle Attribute neu Setzen");
+            ShowPlayerList();
+            Console.WriteLine("Welchen Spieler möchten sie bearbeiten? Bitte geben sie die Entsprechende ID ein");
             BearbeitenSpieler = Console.ReadLine();
-            int.TryParse(BearbeitenSpieler, out transform);
-            transform = transform - 1;
-            SpielerList.RemoveAt(transform);
-            var p1 = Spieler.Create();
-            SpielerList.Add(p1);
+            bool breakout = false;
+            while (breakout = false)
+            {
+                Console.WriteLine("Welches Attribut möchten sie bearbeiten? (nur 1)");
+                string CaseSwitch= Console.ReadLine();
+                bool truth;
+                switch (CaseSwitch)
+                {
+                    case "ID":
+                        Console.WriteLine("Die ID kann nicht bearbeitet werden");
+                        break;
+                    case "Vorname":
+                        
+                        Console.WriteLine("Der Vorname wurde geändert");
+                        break;
+                }
+                var p1 = CreatePlayer();
+                SpielerList.Add(p1);
 
-            Console.Clear();
+            }
         }
 
         public void RemovePlayer()
         {
-            int count = 0;
-            var Table = new ConsoleTable("Position", "Vorname", "Name", "Telefonnummer", "Strasse", "Nummer", "Ort", "PLZ");
-            Console.WriteLine("Hier die Liste aller Spieler");
-            foreach (Spieler item in SpielerList)
-            {
-                count++;
-
-                Table.AddRow(count, item.Vorname, item.Name, item.Telefonnummer, item.Strasse, item.Nummer, item.Ort, item.PLZ);
-            }
-            Console.WriteLine(Table);
+            ShowPlayerList();
             Console.WriteLine("Welchen Spieler möchten sie entfernen? Bitte geben sie die Entsprechende Position ein");
             BearbeitenSpieler = Console.ReadLine();
             int.TryParse(BearbeitenSpieler, out transform);
@@ -115,10 +135,6 @@ namespace Gruempeliturnier
             }
         }
 
-        public int GetPosOfID(int ID)
-        {
-            PosOfID = ID - 1;
-            return PosOfID;
-        }
+
     }
 }

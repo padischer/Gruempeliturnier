@@ -6,7 +6,6 @@ namespace Gruempeliturnier
     {
         private static void Main(string[] args)
         {
-            string test = "Bla";
             //Files aus einem Programm heraus erstellen und Füllen
             //File.WriteAllText(@"C:\Users\svenw\Documents\bla.txt", test);
 
@@ -26,7 +25,7 @@ namespace Gruempeliturnier
                 Eingabe = Console.ReadLine();
                 if (Eingabe == "1")
                 {
-                    var p1 = Spieler.Create();
+                    var p1 = spieler.CreatePlayer();
                     spieler.SpielerList.Add(p1);
 
                     Console.Clear();
@@ -34,7 +33,7 @@ namespace Gruempeliturnier
 
                 if (Eingabe == "2")
                 {
-                    spieler.AdaptPlayer();
+                    spieler.ChangePlayer();
                 }
 
                 if (Eingabe == "3")
@@ -48,7 +47,7 @@ namespace Gruempeliturnier
                 }
                 if (Eingabe == "5")
                 {
-                    spieler.AdaptPlayer();
+                    spieler.Player();
                 }
                 if (Eingabe == "6")
                 {

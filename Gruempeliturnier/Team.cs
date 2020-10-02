@@ -26,18 +26,18 @@ namespace Gruempeliturnier
             Console.WriteLine("Bitte geben sie einen Namen für das Team ein");
             var Name = Console.ReadLine();
             bool breakout = false;
-            while (breakout == false)
+            while (breakout == false)                                                 
             {
-                int count = 0;
+
                 foreach(Spieler spieler in Einzelspieler.SpielerList)
                 {
                     var Table = new ConsoleTable("Position", "Vorname", "Name", "Telefonnummer", "Strasse", "Nummer", "Ort", "PLZ");
                     Console.WriteLine("Hier die Liste aller Spieler");
                     foreach (Spieler item in Einzelspieler.SpielerList)
                     {
-                        count++;
 
-                        Table.AddRow(count, item.Vorname, item.Name, item.Telefonnummer, item.Strasse, item.Nummer, item.Ort, item.PLZ);
+                                         
+                        Table.AddRow(item.ID, item.Vorname, item.Name, item.Telefonnummer, item.Strasse, item.Nummer, item.Ort, item.PLZ);
                     }
                     Console.WriteLine(Table);
                 }
