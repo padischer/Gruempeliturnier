@@ -17,82 +17,67 @@ namespace Gruempeliturnier
         string BearbeitenSpieler;
         int transform;
         public string Name { get; set; }
-        public int Punkte { get; set; }
+        public string TeamID { get; set; }
+        public string Punkte { get; set; }
+
+        int TeamCount;
 
         public Team CreateTeam()
         {
-
-            var MemberList = new List<Spieler>();
+            
+            var MembList = new List<Spieler>();
             Console.WriteLine("Bitte geben sie einen Namen für das Team ein");
             var Name = Console.ReadLine();
-            bool breakout = true;
-            while (breakout)                                                 
-            {
-
-                foreach(Spieler spieler in Einzelspieler.SpielerList)
-                {
-                    var Table = new ConsoleTable("Position", "Vorname", "Name", "Telefonnummer", "Strasse", "Nummer", "Ort", "PLZ");
-                    Console.WriteLine("Hier die Liste aller Spieler");
-                    foreach (Spieler item in Einzelspieler.SpielerList)
-                    {
-
-                                         
-                        Table.AddRow(item.ID, item.Vorname, item.Name, item.Telefonnummer, item.Strasse, item.Nummer, item.Ort, item.PLZ);
-                    }
-                    Console.WriteLine(Table);
-                }
-                
-                Console.WriteLine("Bitte geben sie die Position des Spielers an");
-                string Member = Console.ReadLine();
-                foreach(Spieler Player in Einzelspieler.SpielerList)
-                {
-                  //  if(Member == )
-                    {
-
-                    }
-                }
-            }
-
-
-
-
-
-
-
-
-
+            TeamCount++;
 
             return new Team
             {
                 Name = Name,
-                MemberList = MemberList
+                TeamID = TeamCount.ToString(),
+                MemberList = MembList
             };
-            /*
-            Console.WriteLine("Bitte geben sie die Position des Spielers ein, deb sie hinzufuegen möchten");
-            var Member = Console.ReadLine();
-            int.TryParse(Member, out transform);
-            transform = transform - 1;
-            foreach (Spieler item in Einzelspieler.SpielerList)
-            {
-                if (transform == )
-                {
-                    MemberList.Add(item);
-                }
-            }
-            
-            return new Team
-            {
-                Name = Name,
-                MemberList = MemberList
-                
-            };
-            */
+
         }
 
-        public void AdaptTeam()
+        public void ShowTeamList()
         {
+            var Table = new ConsoleTable("ID", "Name");
+            Console.WriteLine("Hier die Liste aller Teams");
+            foreach (Team item in TeamList)
+            {
 
+                Table.AddRow(item.TeamID, item.Name);
+            }
+            Console.WriteLine(Table);
         }
+
+        public void FillTeam()
+        {
+            Team selected = new Team();
+            ShowTeamList();
+            Console.WriteLine("Bitte nennen sie die TeamID");
+            string ZSpeicherTID = Console.ReadLine();
+            foreach (Team item in TeamList)
+            {
+                if (ZSpeicherTID == item.TeamID)
+                {
+                    selected = item;
+                }
+            }
+            Einzelspieler.ShowPlayerList();
+            Console.WriteLine("Bitte geben sie die ID des Spielers ein, den sie hinzufügen möchten");
+            string PlayerID = Console.ReadLine();
+            foreach (Spieler Player in Einzelspieler.SpielerList)
+            {
+                if(Player.ID == PlayerID)
+                {
+                    selected.MemberList.Add(Player);
+                }
+            }
+        }
+
+
+
         public void RemoveTeam()
         {
             int count = 0;

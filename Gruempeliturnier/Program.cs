@@ -15,17 +15,31 @@ namespace Gruempeliturnier
             while (true)
             {
                 Console.WriteLine("Was möchten sie tun?");
+                Console.WriteLine("0:SielerListe anzeigen");
                 Console.WriteLine("1:Spieler Hinzufuegen");
                 Console.WriteLine("2:Spieler Bearbeiten");
                 Console.WriteLine("3:Spieler Entfernen");
-                Console.WriteLine("4:Erstellen");
+                Console.WriteLine("4:Ein Team Erstellen");
                 Console.WriteLine("5:Spieler einem Team Hinzufügen");
                 Console.WriteLine("6:Spieler aus einem Team entfernen");
                 Console.WriteLine("7:Team Entfernen");
                 Console.WriteLine("8:Programm beenden");
                 Eingabe = Console.ReadLine();
+
+
+
+                if (Eingabe == "0")
+                {
+                    Console.Clear();
+                    spieler.ShowPlayerList();
+                    Console.WriteLine("Beliebige Taste drücken um zum Menu zu kommen");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+
                 if (Eingabe == "1")
                 {
+                    Console.Clear();
                     var p1 = spieler.CreatePlayer();
                     spieler.SpielerList.Add(p1);
 
@@ -34,22 +48,29 @@ namespace Gruempeliturnier
 
                 if (Eingabe == "2")
                 {
+                    Console.Clear();
                     spieler.ChangePlayer();
                     Console.Clear();
                 }
 
                 if (Eingabe == "3")
                 {
+                    Console.Clear();
                     spieler.RemovePlayer();
+                    Console.Clear();
                 }
                 if (Eingabe == "4")
                 {
+                    Console.Clear();
                     var t1 = Teams.CreateTeam();
                     Teams.TeamList.Add(t1);
+                    Console.Clear();
                 }
                 if (Eingabe == "5")
                 {
-
+                    Console.Clear();
+                    Teams.FillTeam();
+                    Console.Clear();
                 }
                 if (Eingabe == "6")
                 {
