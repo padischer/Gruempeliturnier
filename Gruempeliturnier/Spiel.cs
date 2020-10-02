@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Gruempeliturnier
+﻿namespace Gruempeliturnier
 {
-    class Spiel
+    internal class Spiel
     {
         public int Time { get; set; }
         public int ToreTeam1 { get; set; }

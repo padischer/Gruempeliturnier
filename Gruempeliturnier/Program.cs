@@ -1,14 +1,16 @@
-﻿using System;
-
-namespace Gruempeliturnier
+﻿namespace Gruempeliturnier
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
+            var main = new Menu();
+            main.Menue();
+
             //Files aus einem Programm heraus erstellen und Füllen
             //File.WriteAllText(@"C:\Users\svenw\Documents\bla.txt", test);
 
+            /*
             string Eingabe;
             var Teams = new Team();
             var spieler = new Spieler();
@@ -25,8 +27,6 @@ namespace Gruempeliturnier
                 Console.WriteLine("7:Team Entfernen");
                 Console.WriteLine("8:Programm beenden");
                 Eingabe = Console.ReadLine();
-
-
 
                 if (Eingabe == "0")
                 {
@@ -69,7 +69,6 @@ namespace Gruempeliturnier
                 }
                 if (Eingabe == "6")
                 {
-
                 }
                 if (Eingabe == "7")
                 {
@@ -81,6 +80,7 @@ namespace Gruempeliturnier
             }
 
             Console.ReadKey();
+            */
         }
     }
 }

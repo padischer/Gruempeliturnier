@@ -1,9 +1,6 @@
 ﻿using ConsoleTables;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace Gruempeliturnier
 {
@@ -11,9 +8,7 @@ namespace Gruempeliturnier
     {
         public List<Spieler> SpielerList = new System.Collections.Generic.List<Spieler>();
 
-        
         private string BearbeitenSpieler { get; set; }
-        public string SaveID { get; set; }
         public static int Count { get; set; }
         public string ID { get; set; }
         public string Name { get; set; }
@@ -31,7 +26,6 @@ namespace Gruempeliturnier
             Console.WriteLine("Hier die Liste aller Spieler");
             foreach (Spieler item in SpielerList)
             {
-
                 Table.AddRow(item.ID, item.Vorname, item.Name, item.Telefonnummer, item.Strasse, item.Nummer, item.Ort, item.PLZ);
             }
             Console.WriteLine(Table);
@@ -39,7 +33,6 @@ namespace Gruempeliturnier
 
         internal void ReplacePlayerAttibute(string Nummer, string Attribut, string Replacement)
         {
-
             foreach (Spieler item in SpielerList)
             {
                 if (item.ID == Nummer)
@@ -49,9 +42,11 @@ namespace Gruempeliturnier
                         case "Vorname":
                             item.Vorname = Replacement;
                             break;
+
                         case "Name":
                             item.Name = Replacement;
                             break;
+
                         case "Telefonnummer":
                             item.Telefonnummer = Replacement;
                             break;
@@ -67,10 +62,10 @@ namespace Gruempeliturnier
                         case "Ort":
                             item.Ort = Replacement;
                             break;
+
                         case "PLZ":
                             item.PLZ = Replacement;
                             break;
-
                     }
                 }
             }
@@ -93,11 +88,9 @@ namespace Gruempeliturnier
             Console.WriteLine("Bitte geben sie die PLZ vom Wohnort des spielers ein");
             var PLZ = Console.ReadLine();
             Count++;
-            
-            
+
             return new Spieler
-            {   
-                
+            {
                 ID = Count.ToString(),
                 Vorname = Vorname,
                 Name = Name,
@@ -118,7 +111,7 @@ namespace Gruempeliturnier
             while (breakout)
             {
                 Console.WriteLine("Welches Attribut möchten sie bearbeiten? (nur 1)");
-                string CaseSwitch= Console.ReadLine();
+                string CaseSwitch = Console.ReadLine();
                 if (CaseSwitch == "ID")
                 {
                     Console.WriteLine("Sie dürfen die ID nicht bearbeiten. Möchten sie stadtdessen ein anderes Attribut bearbeiten? y/n");
@@ -128,31 +121,36 @@ namespace Gruempeliturnier
                 string replace = Console.ReadLine();
                 switch (CaseSwitch)
                 {
-
                     case "Vorname":
                         ReplacePlayerAttibute(BearbeitenSpieler, CaseSwitch, replace);
                         Console.WriteLine("Der Vorname wurde geändert");
                         break;
+
                     case "Name":
                         ReplacePlayerAttibute(BearbeitenSpieler, CaseSwitch, replace);
                         Console.WriteLine("Der Name wurde geändert");
                         break;
+
                     case "Telefonnummer":
                         ReplacePlayerAttibute(BearbeitenSpieler, CaseSwitch, replace);
                         Console.WriteLine("Die Telefonnummer wurde geändert");
                         break;
+
                     case "Strasse":
                         ReplacePlayerAttibute(BearbeitenSpieler, CaseSwitch, replace);
                         Console.WriteLine("Die Strasse wurde geändert");
                         break;
+
                     case "Hausnummer":
                         ReplacePlayerAttibute(BearbeitenSpieler, CaseSwitch, replace);
                         Console.WriteLine("Die Hausnummer wurde geändert");
                         break;
+
                     case "Ort":
                         ReplacePlayerAttibute(BearbeitenSpieler, CaseSwitch, replace);
                         Console.WriteLine("Der Ort wurde geändert");
                         break;
+
                     case "PLZ":
                         ReplacePlayerAttibute(BearbeitenSpieler, CaseSwitch, replace);
                         Console.WriteLine("Die PLZ wurde geändert");
@@ -169,40 +167,19 @@ namespace Gruempeliturnier
 
         public void RemovePlayer()
         {
-            ShowPlayerList();
             Console.WriteLine("Welchen Spieler möchten sie entfernen? Bitte geben sie die Entsprechende ÏD ein");
             BearbeitenSpieler = Console.ReadLine();
             var Temp = new Spieler();
             foreach (Spieler item in SpielerList)
             {
-                if(item.ID == BearbeitenSpieler)
+                if (item.ID == BearbeitenSpieler)
                 {
                     Temp = item;
                 }
             }
             SpielerList.Remove(Temp);
-            
 
             Console.Clear();
         }
-
-        public void adaptList()
-        {
-            int countList = 0;
-            foreach (Spieler Player in SpielerList)
-            {
-                countList++;
-                while (Player.ID != countList.ToString())
-                {
-                    int PlayerIDInt;
-
-                    int.TryParse(Player.ID, out PlayerIDInt);
-                    PlayerIDInt = PlayerIDInt - 1;
-                    Player.ID = PlayerIDInt.ToString();
-                }
-            }
-        }
-
-
     }
 }
